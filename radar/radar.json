@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-10-28T13:19:03.609Z",
+ "atualizado": "2026-10-28T18:04:30.268Z",
  "fonte": "curadoria manual + conferência automática",
  "nichos": [
   {
@@ -186,6 +186,48 @@
        "disponivel": null
       }
      ]
+    },
+    {
+     "n": "Suporte de parede para bicicleta",
+     "ic": "rack",
+     "plat": "",
+     "fmt": "Demonstração direta: parafusar na parede, encaixar a roda e pronto. Vídeo de 12 segundos.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@maisha.akter5969",
+       "src": "TikTok",
+       "views": "2,6 mi",
+       "date": "17/10",
+       "url": "https://www.tiktok.com/@maisha.akter5969/video/7697629295736327442",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@maisha.akter5969",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Gaveteiro portátil com rodinhas",
+     "ic": "cab",
+     "plat": "",
+     "fmt": "Mostra o gaveteiro sendo montado em cortes rápidos, com texto na tela anunciando a promoção de levar 2 pagando 1.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@marcio.freitas608",
+       "src": "TikTok",
+       "views": "880 mil",
+       "date": "13/10",
+       "url": "https://www.tiktok.com/@marcio.freitas608/video/7696266434330037512",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@marcio.freitas608",
+       "miniatura": ""
+      }
+     ]
     }
    ]
   },
@@ -370,6 +412,792 @@
        "views": "1,5 mi",
        "date": "09/10",
        "url": "https://www.instagram.com/reel/DeSMfUTM9OR",
+       "disponivel": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "carros",
+   "label": "Carros e motos",
+   "itens": [
+    {
+     "n": "Painel de LED solar com olhos para o vidro traseiro",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "Mostra o produto na mão e logo coloca no vidro do carro para ver o efeito. Um dos vídeos usa texto na tela dizendo que é o acessório mais divertido que a pessoa já comprou.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@cavernaindica",
+       "src": "TikTok",
+       "views": "3,4 mi",
+       "date": "10/10",
+       "url": "https://www.tiktok.com/@cavernaindica/video/7695155698451156232",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@cavernaindica",
+       "miniatura": ""
+      },
+      {
+       "who": "@jjbalan",
+       "src": "TikTok",
+       "views": "673 mil",
+       "date": "16/10",
+       "url": "https://www.tiktok.com/@jjbalan/video/7697416846936526096",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@jjbalan",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Fita de vedação para porta de carro",
+     "ic": "rack",
+     "plat": "tiktok",
+     "fmt": "Mão aplicando a fita na borda da porta, enquanto a pessoa explica o benefício logo no começo: menos poeira, vento e barulho.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@davirecomenda_",
+       "src": "TikTok",
+       "views": "1,9 mi",
+       "date": "01/10",
+       "url": "https://www.tiktok.com/@davirecomenda_/video/7691495475672894738",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@davirecomenda_",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Buzina de trem 12V para carro e moto",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "Começa com o som alto da buzina, depois mostra a peça na mão e a instalação perto do motor. No TikTok, o vídeo usa a hashtag do TikTok Shop.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@proibidopoupar",
+       "src": "Instagram",
+       "views": "775 mil",
+       "date": "19/10",
+       "url": "https://www.instagram.com/reel/DesbgkZhWF8",
+       "disponivel": null
+      },
+      {
+       "who": "@gabrielmshop",
+       "src": "TikTok",
+       "views": "540 mil",
+       "date": "21/10",
+       "url": "https://www.tiktok.com/@gabrielmshop/video/7699174803432869127",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@gabrielmshop",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Produtos de limpeza e detalhamento automotivo",
+     "ic": "spray",
+     "plat": "",
+     "fmt": "Lista com 4 produtos, cada um mostrado em corte rápido: sujeira, aplicação e resultado. Abre com a lavagem de um motor muito sujo.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@nexlux.detail",
+       "src": "Instagram",
+       "views": "1,6 mi",
+       "date": "15/10",
+       "url": "https://www.instagram.com/reel/DehU78-RpZI",
+       "disponivel": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "comida",
+   "label": "Comida e cozinha",
+   "itens": [
+    {
+     "n": "Colher modeladora de almôndega e bolinho",
+     "ic": "scoop",
+     "plat": "shopee",
+     "fmt": "Tela dividida: a colher formando as bolinhas de um lado e a pessoa explicando do outro. Cita que achou na Shopee.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@guii.achados",
+       "src": "Instagram",
+       "views": "2,3 mi",
+       "date": "09/10",
+       "url": "https://www.instagram.com/reel/DeRroyoKxqM",
+       "disponivel": null
+      }
+     ]
+    },
+    {
+     "n": "Mexedor automático de panela",
+     "ic": "blender",
+     "plat": "",
+     "fmt": "Vídeo curto: a pessoa encaixa o mexedor na panela no fogão. Texto na tela fala de não ficar parada na frente do fogão.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@naturalidades3",
+       "src": "TikTok",
+       "views": "1,3 mi",
+       "date": "06/10",
+       "url": "https://www.tiktok.com/@naturalidades3/video/7693443913079655687",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@naturalidades3",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Moedor elétrico de sal e pimenta",
+     "ic": "blender",
+     "plat": "tiktok",
+     "fmt": "Close do moedor funcionando, com o som do motor logo no início. Fala do desconto pelo link do TikTok Shop.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@julianefernandesbr",
+       "src": "TikTok",
+       "views": "1,8 mi",
+       "date": "06/10",
+       "url": "https://www.tiktok.com/@julianefernandesbr/video/7693638199767354630",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@julianefernandesbr",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Utensílios de cozinha da Shopee",
+     "ic": "dish",
+     "plat": "shopee",
+     "fmt": "Compilação de utensílios, cada um em uso e com o benefício dito em uma frase. Dois vídeos usam “comprei na Shopee” logo no título ou no começo.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@ofertasdaisah",
+       "src": "Instagram",
+       "views": "2,1 mi",
+       "date": "28/09",
+       "url": "https://www.instagram.com/reel/Dd2K5NyJWle",
+       "disponivel": null
+      },
+      {
+       "who": "@produtoachado3",
+       "src": "TikTok",
+       "views": "689 mil",
+       "date": "19/10",
+       "url": "https://www.tiktok.com/@produtoachado3/video/7698334413783862548",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@produtoachado3",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Pipoqueira elétrica",
+     "ic": "blender",
+     "plat": "",
+     "fmt": "Mostra o preparo passo a passo e, no fim, a tela do aplicativo do Mercado Livre. Parte desse tipo de vídeo é parceria paga.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@brunakarinebk",
+       "src": "Instagram",
+       "views": "727 mil",
+       "date": "15/10",
+       "url": "https://www.instagram.com/reel/Deg16h8qZ5T",
+       "disponivel": null
+      }
+     ]
+    },
+    {
+     "n": "Marmita em formato de banana",
+     "ic": "dish",
+     "plat": "",
+     "fmt": "Vídeo lento e sem fala: o texto na tela apresenta a “fruta” e, ao abrir, aparece o doce dentro.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@deleitebr",
+       "src": "Instagram",
+       "views": "7,5 mi",
+       "date": "21/10",
+       "url": "https://www.instagram.com/reel/DewfuSROcL-",
+       "disponivel": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "bebe",
+   "label": "Bebê e criança",
+   "itens": [
+    {
+     "n": "Lenço umedecido para bebê",
+     "ic": "clip",
+     "plat": "tiktok",
+     "fmt": "Mão tirando o pacote da caixa e testando a textura do lenço. Texto na tela destaca que é testado dermatologicamente e sem álcool.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@kamillaborgesz",
+       "src": "TikTok",
+       "views": "770 mil",
+       "date": "10/10",
+       "url": "https://www.tiktok.com/@kamillaborgesz/video/7695097113000168724",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@kamillaborgesz",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Kit de penteados para cabelo de menina",
+     "ic": "clip",
+     "plat": "tiktok",
+     "fmt": "Abre com uma pergunta para quem tem filha e já tentou fazer penteado. Depois mostra os acessórios do kit um por um.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@belaindica6",
+       "src": "TikTok",
+       "views": "2 mi",
+       "date": "30/09",
+       "url": "https://www.tiktok.com/@belaindica6/video/7691459198609149192",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@belaindica6",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Naninha para o bebê dormir",
+     "ic": "cat",
+     "plat": "",
+     "fmt": "A mãe segura a naninha na câmera, pergunta se o espectador também deu uma ao filho e explica como ela ajuda no sono.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@projetodafny",
+       "src": "Instagram",
+       "views": "782 mil",
+       "date": "19/10",
+       "url": "https://www.instagram.com/reel/DesKurvoo0P",
+       "disponivel": null
+      }
+     ]
+    },
+    {
+     "n": "Mamadeira usada como chuveirinho",
+     "ic": "scoop",
+     "plat": "",
+     "fmt": "Close da mamadeira cheia de água virando um “chuveirinho” sobre o banho do bebê, com voz explicando o truque.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@gabi.mazzarollo",
+       "src": "Instagram",
+       "views": "806 mil",
+       "date": "09/10",
+       "url": "https://www.instagram.com/reel/DeSVLnWIltm",
+       "disponivel": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "brinquedos",
+   "label": "Brinquedos",
+   "itens": [
+    {
+     "n": "Celular infantil educativo recarregável",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "Abre a caixa que acabou de chegar e mostra o aparelho. O texto na tela cita um preço abaixo de R$ 50.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@achadinhosdavez3",
+       "src": "TikTok",
+       "views": "1,5 mi",
+       "date": "12/10",
+       "url": "https://www.tiktok.com/@achadinhosdavez3/video/7695893980990410004",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@achadinhosdavez3",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Brinquedo magnético de montar",
+     "ic": "cab2",
+     "plat": "tiktok",
+     "fmt": "Já começa encaixando as peças magnéticas na frente da câmera, com a pessoa falando de diversão e criatividade. O Instagram mostra uma casinha magnética com personagens.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@lasertech_distribuidora",
+       "src": "Instagram",
+       "views": "982 mil",
+       "date": "09/10",
+       "url": "https://www.instagram.com/reel/DeSbNJRBOKq",
+       "disponivel": null
+      },
+      {
+       "who": "@kamilabasso_",
+       "src": "TikTok",
+       "views": "846 mil",
+       "date": "03/10",
+       "url": "https://www.tiktok.com/@kamilabasso_/video/7692580301981207829",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@kamilabasso_",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Calendário de Natal com 28 brinquedos",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "Pessoa com a caixa aberta tira um pacotinho para mostrar logo no início. Chamada para correr ao carrinho antes de acabar.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@reizinhoindica",
+       "src": "TikTok",
+       "views": "743 mil",
+       "date": "21/10",
+       "url": "https://www.tiktok.com/@reizinhoindica/video/7698924563740118280",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@reizinhoindica",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Caderno de atividades da princesa",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "Tela dividida: a criadora de um lado e o caderno de perto do outro, com adesivos sendo colados. O vídeo tem hashtags de presente para criança.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@jessikataynara24",
+       "src": "TikTok",
+       "views": "878 mil",
+       "date": "08/10",
+       "url": "https://www.tiktok.com/@jessikataynara24/video/7694356382493035796",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@jessikataynara24",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Maleta de maquiagem infantil rosa",
+     "ic": "kit",
+     "plat": "",
+     "fmt": "Mãos abrindo a caixa da maleta e a pessoa sugerindo como presente de Dia das Crianças.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@nakamura.shop",
+       "src": "TikTok",
+       "views": "599 mil",
+       "date": "04/10",
+       "url": "https://www.tiktok.com/@nakamura.shop/video/7692590279592906004",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@nakamura.shop",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Espada retrátil de brinquedo",
+     "ic": "ramp",
+     "plat": "",
+     "fmt": "Pessoa segurando o pacote fino, abre e mostra a espada se recolhendo. Recomenda como presente.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@jheffroquez",
+       "src": "TikTok",
+       "views": "711 mil",
+       "date": "05/10",
+       "url": "https://www.tiktok.com/@jheffroquez/video/7693303881215823124",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@jheffroquez",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Brinquedos baratinhos da Shopee",
+     "ic": "kit",
+     "plat": "shopee",
+     "fmt": "Mãe e filho à mesa com vários brinquedos, comentando um por um. Chamada para comentar “QUERO” e receber o link.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@nicoolerss",
+       "src": "Instagram",
+       "views": "757 mil",
+       "date": "30/09",
+       "url": "https://www.instagram.com/reel/Dd694xSNaUz",
+       "disponivel": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "eletronicos",
+   "label": "Eletrônicos",
+   "itens": [
+    {
+     "n": "Capinha de celular com tela E-ink",
+     "ic": "watch",
+     "plat": "",
+     "fmt": "Dois amigos testam a capinha: colocam no celular e trocam a imagem exibida pelo aplicativo. Tela dividida com reações.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@oqcomprei",
+       "src": "TikTok",
+       "views": "2,6 mi",
+       "date": "03/10",
+       "url": "https://www.tiktok.com/@oqcomprei/video/7692530523926793479",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@oqcomprei",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Fone invisível para dormir",
+     "ic": "watch",
+     "plat": "",
+     "fmt": "Esquete com a mesma pessoa em dois papéis, um com o fone comum e outro com o fone “coreano”, e uma disputa para ver qual é melhor.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@leonelindica",
+       "src": "TikTok",
+       "views": "3,3 mi",
+       "date": "02/10",
+       "url": "https://www.tiktok.com/@leonelindica/video/7692187524650831112",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@leonelindica",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Fone Bluetooth sem fio com app",
+     "ic": "watch",
+     "plat": "",
+     "fmt": "Câmera na mão mostrando o aplicativo do fone e o encaixe na orelha, com voz falando do desconto do dia.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@walkerindica",
+       "src": "TikTok",
+       "views": "2,5 mi",
+       "date": "19/10",
+       "url": "https://www.tiktok.com/@walkerindica/video/7698191323282558224",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@walkerindica",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Fone Bluetooth de borboleta",
+     "ic": "watch",
+     "plat": "",
+     "fmt": "Pessoa tira o estojo rosa da bolsa e mostra o fone em formato de borboleta, falando de visual e das funções. Termina com o preço.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@feiraodobrasilz",
+       "src": "Instagram",
+       "views": "783 mil",
+       "date": "24/10",
+       "url": "https://www.instagram.com/reel/De5QSRth_ZD",
+       "disponivel": null
+      }
+     ]
+    },
+    {
+     "n": "Cabo carregador 4 em 1",
+     "ic": "clip",
+     "plat": "tiktok",
+     "fmt": "Dois formatos de vídeo: uma dupla comparando “cabo americano x japonês” e um leilão de cabos feito por um casal, ambos puxando para o cabo do link.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@xandaottkshop",
+       "src": "TikTok",
+       "views": "1,2 mi",
+       "date": "29/09",
+       "url": "https://www.tiktok.com/@xandaottkshop/video/7690750830336625940",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@xandaottkshop",
+       "miniatura": ""
+      },
+      {
+       "who": "@thiago.tkshopp",
+       "src": "TikTok",
+       "views": "1,2 mi",
+       "date": "05/10",
+       "url": "https://www.tiktok.com/@thiago.tkshopp/video/7693304461174836487",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@thiago.tkshopp",
+       "miniatura": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "fitness",
+   "label": "Fitness e saúde",
+   "itens": [
+    {
+     "n": "Whey protein em oferta",
+     "ic": "scoop",
+     "plat": "tiktok",
+     "fmt": "Pessoa abre o pacote e mostra na câmera, com texto na tela destacando o preço. Vídeo curto de 21 segundos.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@anagabi.x",
+       "src": "TikTok",
+       "views": "9,7 mi",
+       "date": "01/10",
+       "url": "https://www.tiktok.com/@anagabi.x/video/7691703622563892486",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@anagabi.x",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Proteína de carne em pó",
+     "ic": "scoop",
+     "plat": "tiktok",
+     "fmt": "Pessoa de frente para a câmera com o copo na mão, destacando a quantidade de proteína e o sabor “de suco”. Tem a hashtag do TikTok Shop.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@cami.penha",
+       "src": "TikTok",
+       "views": "967 mil",
+       "date": "30/09",
+       "url": "https://www.tiktok.com/@cami.penha/video/7691464219958463764",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@cami.penha",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Creatina para ter em casa",
+     "ic": "scoop",
+     "plat": "",
+     "fmt": "Apresentadora fala direto para a câmera, com imagens do produto entre uma fala e outra, e texto “CRIATINA” logo no começo.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@vitrinefitness_br",
+       "src": "TikTok",
+       "views": "862 mil",
+       "date": "03/10",
+       "url": "https://www.tiktok.com/@vitrinefitness_br/video/7692257415668026631",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@vitrinefitness_br",
+       "miniatura": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "key": "ferramentas",
+   "label": "Ferramentas",
+   "itens": [
+    {
+     "n": "Furadeira e parafusadeira sem fio",
+     "ic": "rack",
+     "plat": "tiktok",
+     "fmt": "Mão abre a maleta e mostra a furadeira, com voz energética avisando que entrou na oferta relâmpago. Outro vídeo mostra a organização do kit.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@renan_soares_shop",
+       "src": "TikTok",
+       "views": "1,1 mi",
+       "date": "06/10",
+       "url": "https://www.tiktok.com/@renan_soares_shop/video/7693583846805163272",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@renan_soares_shop",
+       "miniatura": ""
+      },
+      {
+       "who": "@marck_shop",
+       "src": "TikTok",
+       "views": "844 mil",
+       "date": "02/10",
+       "url": "https://www.tiktok.com/@marck_shop/video/7692060166870535444",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@marck_shop",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Kit de chave de impacto, furadeira e parafusadeira",
+     "ic": "rack",
+     "plat": "tiktok",
+     "fmt": "Pessoa mostra a chave de impacto e os acessórios em sequência, com chamada para o link e hashtags do TikTok Shop.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@achotop",
+       "src": "TikTok",
+       "views": "2,3 mi",
+       "date": "10/10",
+       "url": "https://www.tiktok.com/@achotop/video/7694995121980378388",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@achotop",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Broca diamantada",
+     "ic": "rack",
+     "plat": "",
+     "fmt": "Furando vários materiais para testar a promessa dos anúncios, com tela dividida entre a criadora e o produto.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@miraeachados",
+       "src": "TikTok",
+       "views": "1,4 mi",
+       "date": "20/10",
+       "url": "https://www.tiktok.com/@miraeachados/video/7698879923842452754",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@miraeachados",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Jogo de soquetes de 12 peças",
+     "ic": "rack",
+     "plat": "",
+     "fmt": "Pessoa traz o kit para perto da câmera já no começo e fala do tamanho de 8 a 24 mm e do preço baixo.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@fsouzaindica",
+       "src": "TikTok",
+       "views": "618 mil",
+       "date": "12/10",
+       "url": "https://www.tiktok.com/@fsouzaindica/video/7695781759622925569",
+       "disponivel": true,
+       "titulo": "",
+       "autor": "@fsouzaindica",
+       "miniatura": ""
+      }
+     ]
+    },
+    {
+     "n": "Kit que transforma parafusadeira em semiautomática",
+     "ic": "rack",
+     "plat": "",
+     "fmt": "Close do acessório e teste real em uma peça de madeira, terminando com opinião e chamada para o público.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {
+       "who": "@alisson.renger",
+       "src": "Instagram",
+       "views": "954 mil",
+       "date": "20/10",
+       "url": "https://www.instagram.com/reel/DeuyPebR7di",
        "disponivel": null
       }
      ]
