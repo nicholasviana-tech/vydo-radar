@@ -97,7 +97,7 @@ function dnum(d) { var m = /(\d+)\/(\d+)/.exec(d || ''); return m ? (+m[2]) * 31
 function okVideos(it) { return it.videos.filter(function (v) { return v.disponivel !== false; }); }
 function best(it) { var vs = okVideos(it), b = vs[0]; vs.forEach(function (v) { if (vnum(v.views) > vnum(b.views)) b = v; }); return b; }
 function embed(u) {
-  var t = /tiktok\.com\/.*\/video\/(\d+)/.exec(u); if (t) return 'https://www.tiktok.com/player/v1/' + t[1] + '?autoplay=1&loop=1&music_info=1&description=1';
+  var t = /tiktok\.com\/.*\/video\/(\d+)/.exec(u); if (t) return 'https://www.tiktok.com/player/v1/' + t[1] + '';
   var y = /(?:youtube\.com\/(?:shorts\/|watch\?v=)|youtu\.be\/)([\w-]{6,})/.exec(u); if (y) return 'https://www.youtube.com/embed/' + y[1] + '?autoplay=1&playsinline=1&rel=0';
   var i = /instagram\.com\/(?:reel|p)\/([\w-]+)/.exec(u); if (i) return 'https://www.instagram.com/reel/' + i[1] + '/embed';
   return '';
