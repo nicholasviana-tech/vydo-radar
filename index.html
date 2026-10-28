@@ -55,7 +55,7 @@ h1 em { font-family:var(--serif); font-style:italic; color:var(--fg-2); font-wei
 .sub { font-family:var(--mono); font-size:12px; color:var(--mute); }
 .empty { padding:40px 20px; border:1px dashed var(--line-2); border-radius:22px; color:var(--mute); text-align:center; }
 .empty b { color:var(--fg); font-weight:500; }
-footer { margin-top:40px; color:var(--mute); font-size:13px; max-width:640px; }
+footer { margin-top:40px; color:var(--mute); font-size:13px; display:flex; align-items:flex-start; gap:12px; }
 .modal { position:fixed; inset:0; z-index:10; display:none; background:rgba(0,0,0,.72); backdrop-filter:blur(6px); }
 .modal.on { display:flex; justify-content:flex-end; }
 .sheet { width:min(520px,100%); height:100%; overflow:auto; background:var(--panel); border-left:1px solid var(--line-2); padding:20px 20px 28px; display:flex; flex-direction:column; gap:16px; }
@@ -70,12 +70,13 @@ footer { margin-top:40px; color:var(--mute); font-size:13px; max-width:640px; }
 .btn.pri { background:var(--accent); border-color:var(--accent); color:var(--on-accent); }
 .note { font-size:13px; color:var(--mute); margin:0; }
 
-.tipwrap { position:relative; display:inline-flex; vertical-align:middle; margin-left:6px; }
-.tip { width:18px; height:18px; padding:0; border-radius:50%; border:1px solid var(--line-2); background:transparent; color:var(--mute); font-family:var(--serif); font-style:italic; font-size:13px; line-height:1; cursor:pointer; display:grid; place-items:center; }
-.tip:hover, .tip[aria-expanded="true"] { color:var(--fg); border-color:var(--fg-2); }
-.tipbox { position:absolute; z-index:20; left:-6px; top:26px; width:min(260px,72vw); padding:10px 12px; border-radius:12px; background:var(--panel-2); border:1px solid var(--line-2); box-shadow:0 12px 32px rgba(0,0,0,.55); color:var(--fg-2); font-family:var(--sans); font-size:12.5px; line-height:1.45; letter-spacing:0; text-transform:none; font-style:normal; display:none; }
-.tipwrap.open .tipbox { display:block; }
-footer .tipbox { top:auto; bottom:26px; }
+.tipzone { position:relative; display:flex; justify-content:flex-end; align-items:flex-end; min-height:80px; margin-top:auto; }
+footer .tipzone { flex:1; min-height:44px; margin-top:0; }
+.tip { flex:none; width:22px; height:22px; padding:0; border-radius:50%; border:1px solid var(--line-2); background:transparent; color:var(--mute); font-family:var(--serif); font-style:italic; font-size:15px; line-height:1; cursor:help; display:grid; place-items:center; }
+.tip:hover, .tipzone.open .tip { color:var(--fg); border-color:var(--fg-2); }
+.tipbox { position:absolute; left:0; right:32px; bottom:0; padding:10px 12px; border-radius:12px; background:var(--panel-2); border:1px solid var(--line); color:var(--fg-2); font-size:12.5px; line-height:1.45; opacity:0; visibility:hidden; pointer-events:none; transition:opacity .15s; }
+.tipzone.open .tipbox { opacity:1; visibility:visible; }
+footer .tipbox { text-align:right; background:transparent; border-color:transparent; padding:2px 0; }
 .igframe { border-radius:18px; overflow:hidden; border:1px solid var(--line); background:#fff; }
 @media (max-width:560px) { .seg { margin-left:0; } .sheet { border-left:0; } }
 @media (prefers-reduced-motion:reduce) { .card, .play { transition:none; } }
@@ -114,12 +115,13 @@ function embed(u) {
   return '';
 }
 function tip(text) {
-  var w = el('span', 'tipwrap'), b = el('button', 'tip', 'i'); b.type = 'button'; b.setAttribute('aria-label', 'Mais informação'); b.setAttribute('aria-expanded', 'false');
-  var bx = el('span', 'tipbox', text); bx.setAttribute('role', 'tooltip');
-  b.addEventListener('click', function (e) { e.stopPropagation(); var o = !w.classList.contains('open'); document.querySelectorAll('.tipwrap.open').forEach(function (n) { n.classList.remove('open'); }); w.classList.toggle('open', o); b.setAttribute('aria-expanded', String(o)); });
-  w.appendChild(b); w.appendChild(bx); return w;
+  var z = el('div', 'tipzone'), b = el('button', 'tip', 'i'); b.type = 'button'; b.setAttribute('aria-label', 'Mais informação'); b.setAttribute('aria-describedby', 'tipb');
+  var bx = el('span', 'tipbox', text); bx.setAttribute('role', 'tooltip'); bx.id = 'tipb';
+  function on() { z.classList.add('open'); } function off() { z.classList.remove('open'); }
+  b.addEventListener('mouseenter', on); b.addEventListener('mouseleave', off); b.addEventListener('focus', on); b.addEventListener('blur', off);
+  b.addEventListener('pointerdown', function (e) { if (e.pointerType === 'touch') z.classList.toggle('open'); });
+  z.appendChild(bx); z.appendChild(b); return z;
 }
-document.addEventListener('click', function () { document.querySelectorAll('.tipwrap.open').forEach(function (n) { n.classList.remove('open'); n.firstChild.setAttribute('aria-expanded', 'false'); }); });
 function icon(k) { var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('class', 'ic'); s.setAttribute('aria-hidden', 'true'); s.innerHTML = IC[k] || IC.kit; return s; }
 function all() { var o = []; data.nichos.forEach(function (n) { n.itens.forEach(function (it) { if (okVideos(it).length) o.push({ nk: n.key, nl: n.label, it: it }); }); }); return o; }
 
@@ -177,9 +179,9 @@ function openItem(o) {
   }
   if (vs.length > 1) vs.forEach(function (v) { var t = el('button', 'chip', v.who + ' · ' + v.src); t.type = 'button'; t._v = v; t.addEventListener('click', function () { play(v); }); tabs.appendChild(t); });
   if (vs.length > 1) sheet.appendChild(tabs);
-  var p = vsplit(cur.views), blk = el('div'); var vn = el('div', 'vn'); vn.appendChild(el('b', null, p[0])); if (p[1]) vn.appendChild(el('span', null, p[1])); blk.appendChild(vn); var sb = el('p', 'sub', 'visualizações · postado ' + ago(cur.date)); sb.appendChild(tip('Número de visualizações do vídeo, não de vendas. Confira preço e comissão no painel da loja antes de divulgar. Se o vídeo não carregar, use o botão para abrir no app original.')); blk.appendChild(sb); sheet.appendChild(blk);
+  var p = vsplit(cur.views), blk = el('div'); var vn = el('div', 'vn'); vn.appendChild(el('b', null, p[0])); if (p[1]) vn.appendChild(el('span', null, p[1])); blk.appendChild(vn); var sb = el('p', 'sub', 'visualizações · postado ' + ago(cur.date)); blk.appendChild(sb); sheet.appendChild(blk);
   var f = el('div'); f.appendChild(el('span', 'k', 'Formato que funcionou')); f.appendChild(el('div', null, it.fmt)); sheet.appendChild(f);
-  var row = el('div', 'row'); row.appendChild(open); var app = el('a', 'btn pri', 'Criar a minha versão'); app.href = 'https://claude.ai/artifact/KTSYibSiJsJoaKZSdrAa4k'; app.target = '_blank'; app.rel = 'noopener'; row.appendChild(app); sheet.appendChild(row);
+  var row = el('div', 'row'); row.appendChild(open); var app = el('a', 'btn pri', 'Fazer o meu'); app.href = 'https://claude.ai/artifact/KTSYibSiJsJoaKZSdrAa4k'; app.target = '_blank'; app.rel = 'noopener'; row.appendChild(app); sheet.appendChild(row); sheet.appendChild(tip('Número de visualizações do vídeo, não de vendas. Confira preço e comissão no painel da loja antes de divulgar. Se o vídeo não carregar, use o botão para abrir no app original.'));
   play(cur); modal.classList.add('on'); document.body.style.overflow = 'hidden'; x.focus();
 }
 function close() { var m = document.getElementById('modal'); m.classList.remove('on'); document.getElementById('sheet').textContent = ''; document.body.style.overflow = ''; if (lastFocus) try { lastFocus.focus(); } catch (e) {} }
@@ -188,7 +190,7 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') clos
 fetch('radar/radar.json?v=' + Date.now()).then(function (r) { return r.json(); }).then(function (j) {
   data = j; draw();
   var d = j.atualizado ? new Date(j.atualizado).toLocaleDateString('pt-BR') : '';
-  var ft = document.getElementById('foot'); ft.textContent = 'Atualizado em ' + d; ft.appendChild(tip('O Radar mostra o que aparece nos vídeos, não o que mais vende. Os vídeos são dos criadores, que são os donos do conteúdo.'));
+  var ft = document.getElementById('foot'); ft.textContent = ''; ft.appendChild(el('span', null, 'Atualizado em ' + d)); ft.appendChild(tip('O Radar mostra o que aparece nos vídeos, não o que mais vende. Os vídeos são dos criadores, que são os donos do conteúdo.'));
 }).catch(function () { document.getElementById('out').appendChild(el('div', 'empty', 'Não consegui carregar o Radar agora. Tente de novo em instantes.')); });
 </script>
 </body>
