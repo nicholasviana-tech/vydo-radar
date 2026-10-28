@@ -1,0 +1,210 @@
+{
+ "versao": 1,
+ "observacao": "Lista curada à mão. Cada item tem vídeos reais e, opcionalmente, o produto exato da Shopee em shopee.itemId. O robô só confere e atualiza; não troca produto sozinho.",
+ "nichos": [
+  {
+   "key": "beleza",
+   "label": "Beleza",
+   "itens": [
+    {
+     "n": "Protetor solar com cobertura de maquiagem",
+     "ic": "sun",
+     "plat": null,
+     "fmt": "Demonstração no rosto, às vezes comparando os dois lados e testando a resistência. Parte desses vídeos é parceria paga com a marca.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@natgagliotti", "src": "Instagram", "views": "990 mil", "date": "09/10", "url": "https://www.instagram.com/reel/DeRuL8lOX0_"},
+      {"who": "@dricadivina", "src": "Instagram", "views": "965 mil", "date": "01/10", "url": "https://www.instagram.com/reel/Dd90n7-y4vg"},
+      {"who": "@dudazzanini", "src": "TikTok", "views": "778 mil", "date": "02/10", "url": "https://www.tiktok.com/@dudazzanini/video/7692165377828195602"}
+     ]
+    },
+    {
+     "n": "Kit de skincare com oferta por tempo limitado",
+     "ic": "kit",
+     "plat": "tiktok",
+     "fmt": "A pessoa mostra o kit, explica o que vem dentro e a rotina de uso. Apareceu com a hashtag do TikTok Shop.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@talitabalizaa", "src": "TikTok", "views": "5,5 mi", "date": "30/09", "url": "https://www.tiktok.com/@talitabalizaa/video/7691420894098509063"}
+     ]
+    },
+    {
+     "n": "Spray matificante para pele oleosa",
+     "ic": "spray",
+     "plat": null,
+     "fmt": "Reação em tela dividida a um vídeo viral, seguida do teste no próprio rosto.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@karolresendee", "src": "Instagram", "views": "1,7 mi", "date": "21/10", "url": "https://www.instagram.com/reel/DexYEcmh1kr"}
+     ]
+    }
+   ]
+  },
+  {
+   "key": "casa",
+   "label": "Casa",
+   "itens": [
+    {
+     "n": "Varal elétrico dobrável",
+     "ic": "rack",
+     "plat": "shopee",
+     "fmt": "Montagem passo a passo e, no fim, o varal guardado dobrado. Chamada para comentar uma palavra e receber o link.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@brasil_ofertas_", "src": "Instagram", "views": "3,6 mi", "date": "07/10", "url": "https://www.instagram.com/reel/DeNVEzYsXbH"}
+     ]
+    },
+    {
+     "n": "Escorredor de louça de pia",
+     "ic": "dish",
+     "plat": "tiktok",
+     "fmt": "A pessoa conversa com a câmera e mostra o escorredor instalado, destacando o espaço que ele economiza.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@elii_e_viih", "src": "TikTok", "views": "2,9 mi", "date": "01/10", "url": "https://www.tiktok.com/@elii_e_viih/video/7691851883413081345"}
+     ]
+    },
+    {
+     "n": "Processador de alimentos de cozinha",
+     "ic": "blender",
+     "plat": "shopee",
+     "fmt": "Fala direto para a câmera, começando por uma pergunta sobre perder tempo na cozinha, e mostra o produto funcionando.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@uiara_silva", "src": "TikTok", "views": "2,3 mi", "date": "01/10", "url": "https://www.tiktok.com/@uiara_silva/video/7690763985922149650"}
+     ]
+    },
+    {
+     "n": "Gabinete compacto para pia de banheiro",
+     "ic": "cab",
+     "plat": "tiktok",
+     "fmt": "Vídeo curto de antes e depois do banheiro, com a pessoa ao lado do gabinete explicando como ele organiza.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@gabi.batistabr", "src": "TikTok", "views": "1,8 mi", "date": "28/09", "url": "https://www.tiktok.com/@gabi.batistabr/video/7690550311840435477"}
+     ]
+    },
+    {
+     "n": "Cristaleira iluminada",
+     "ic": "cab2",
+     "plat": "shopee",
+     "fmt": "A pessoa aparece ao lado da cristaleira acesa e narra os detalhes sobre imagens do móvel. Chamada para pedir o link.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@_casinhadamah_", "src": "Instagram", "views": "1,8 mi", "date": "14/10", "url": "https://www.instagram.com/reel/Dee_qehAg9D"}
+     ]
+    }
+   ]
+  },
+  {
+   "key": "moda",
+   "label": "Moda",
+   "itens": [
+    {
+     "n": "Vestidos de festa da Shein",
+     "ic": "dress",
+     "plat": "shein",
+     "fmt": "Formato “na Shein x no corpo”: foto do produto ao lado da pessoa vestindo, alternando peça por peça.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@bi.zanelato", "src": "Instagram", "views": "925 mil", "date": "08/10", "url": "https://www.instagram.com/reel/DePUEJ4hazR"},
+      {"who": "@dearosolino", "src": "Instagram", "views": "814 mil", "date": "11/10", "url": "https://www.instagram.com/reel/DeWwVgDRrTF"},
+      {"who": "@_larycarvalho", "src": "Instagram", "views": "783 mil", "date": "15/10", "url": "https://www.instagram.com/reel/DecWIx1JLeu"}
+     ]
+    },
+    {
+     "n": "Rasteirinha com brilho",
+     "ic": "shoe",
+     "plat": "tiktok",
+     "fmt": "Avaliação em primeira pessoa: o par cai no chão em frente à câmera e a pessoa fala de conforto e visual.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@carol_creator", "src": "TikTok", "views": "1,2 mi", "date": "03/10", "url": "https://www.tiktok.com/@carol_creator/video/7692442278123588871"}
+     ]
+    },
+    {
+     "n": "Relógio masculino à prova d’água",
+     "ic": "watch",
+     "plat": "tiktok",
+     "fmt": "Abre a caixa, mostra o relógio na mão e fala do preço e da promoção relâmpago da loja.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@gabriel.mattoos", "src": "TikTok", "views": "573 mil", "date": "01/10", "url": "https://www.tiktok.com/@gabriel.mattoos/video/7691517558263958785"}
+     ]
+    },
+    {
+     "n": "Chinelo slide branco com corrente dourada",
+     "ic": "slide",
+     "plat": null,
+     "fmt": "Close do par ainda na embalagem, com o texto na tela destacando o valor baixo.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@bailedocachorrao", "src": "TikTok", "views": "617 mil", "date": "29/09", "url": "https://www.tiktok.com/@bailedocachorrao/video/7690795351346924821"}
+     ]
+    }
+   ]
+  },
+  {
+   "key": "pet",
+   "label": "Pet",
+   "itens": [
+    {
+     "n": "Rampa para cachorro subir na cama",
+     "ic": "ramp",
+     "plat": null,
+     "fmt": "Abre com o cachorro pulando da cama alta, mostra a montagem e o antes e depois do uso.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@promosda.alana", "src": "Instagram", "views": "1,2 mi", "date": "29/09", "url": "https://www.instagram.com/reel/Dd4CA8Wp_VW"}
+     ]
+    },
+    {
+     "n": "Kit de tosa para cachorro",
+     "ic": "clip",
+     "plat": null,
+     "fmt": "Máquina cortando o pelo em close, com voz urgente falando de promoção até a meia-noite.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@martachadinhosexclusivos", "src": "TikTok", "views": "1,5 mi", "date": "28/09", "url": "https://www.tiktok.com/@martachadinhosexclusivos/video/7690404489731263752"}
+     ]
+    },
+    {
+     "n": "Colher dosadora com balança para ração",
+     "ic": "scoop",
+     "plat": "tiktok",
+     "fmt": "Vídeo de 10 segundos: a pessoa acha que acertou a porção e descobre a diferença ao pesar.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@monkeydogshop", "src": "TikTok", "views": "610 mil", "date": "02/10", "url": "https://www.tiktok.com/@monkeydogshop/video/7692133640238632199"}
+     ]
+    },
+    {
+     "n": "Porta que deixa o gato passar e luva tira-pelos",
+     "ic": "cat",
+     "plat": "shopee",
+     "fmt": "Dois produtos no mesmo vídeo, cada um em uso real, com chamada para comentar e receber o link.",
+     "busca": "",
+     "shopee": null,
+     "videos": [
+      {"who": "@taciaeosgatos", "src": "Instagram", "views": "1,5 mi", "date": "09/10", "url": "https://www.instagram.com/reel/DeSMfUTM9OR"}
+     ]
+    }
+   ]
+  }
+ ]
+}
