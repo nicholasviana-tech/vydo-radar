@@ -78,6 +78,17 @@ footer .tipzone { flex:1; min-height:44px; margin-top:0; }
 .tipzone.open .tipbox { opacity:1; visibility:visible; }
 footer .tipbox { text-align:right; background:transparent; border-color:transparent; padding:2px 0; }
 .igframe { border-radius:18px; overflow:hidden; border:1px solid var(--line); background:#fff; }
+.vrow { flex:0 0 100%; }
+.views { display:inline-flex; gap:4px; padding:4px; border-radius:999px; border:1px solid var(--line); }
+.views button { min-height:34px; padding:0 16px; border:0; border-radius:999px; background:transparent; color:var(--mute); cursor:pointer; font-size:14px; }
+.views button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
+.sec { margin:34px 0 14px; font-size:20px; font-weight:500; letter-spacing:-.02em; }
+.sec:first-child { margin-top:0; }
+.pimg { position:relative; aspect-ratio:1/1; overflow:hidden; background:var(--panel-2); }
+.pimg img { display:block; width:100%; height:100%; object-fit:cover; }
+.rank { z-index:3; position:absolute; left:12px; top:12px; font-family:var(--mono); font-size:11px; padding:4px 9px; border-radius:999px; background:rgba(8,8,11,.7); border:1px solid var(--line-2); }
+.pv b { font-size:26px; }
+.go { font-size:13px; color:var(--fg-2); }
 @media (max-width:560px) { .seg { margin-left:0; } .sheet { border-left:0; } }
 @media (prefers-reduced-motion:reduce) { .card, .play { transition:none; } }
 </style>
@@ -87,7 +98,7 @@ footer .tipbox { text-align:right; background:transparent; border-color:transpar
   <header><a class="brand" href="./">vydo<i></i></a><a class="cta" href="https://claude.ai/artifact/KTSYibSiJsJoaKZSdrAa4k" target="_blank" rel="noopener">Abrir a Vydo</a></header>
   <p class="eyebrow">Radar</p>
   <h1>Saiba o que divulgar <em>antes.</em></h1>
-  <p class="lead">Produtos que estão aparecendo em vídeos de criadores, com o vídeo original para você assistir e entender o formato.</p>
+  <p class="lead" id="lead"></p>
   <div class="bar" id="bar"></div>
   <div id="out"></div>
   <footer id="foot"></footer>
@@ -96,7 +107,7 @@ footer .tipbox { text-align:right; background:transparent; border-color:transpar
 <script>
 var IC = {"sun": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2\"/>", "kit": "<rect x=\"4\" y=\"10\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M8 10V6h8v4M10 15h4\"/>", "spray": "<rect x=\"8\" y=\"9\" width=\"8\" height=\"12\" rx=\"2\"/><path d=\"M10 9V6h4v3M14 6h4M18 4v4\"/>", "rack": "<path d=\"M4 5h16M4 10h16M4 15h16M6 5v15M18 5v15\"/>", "dish": "<path d=\"M4 14h16l-2 6H6zM7 14V5M11 14V5M15 14V5\"/>", "blender": "<path d=\"M7 3h10l-1 11H8zM8 14h8v4H8zM10 21h4M9 7h6\"/>", "cab2": "<rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"1.5\"/><path d=\"M12 4v17M10 12h.01M14 12h.01\"/>", "cab": "<rect x=\"5\" y=\"4\" width=\"14\" height=\"17\" rx=\"1.5\"/><path d=\"M12 4v17M10 12h.01M14 12h.01\"/>", "dress": "<path d=\"M9 3l3 3 3-3 2 7 3 11H4l3-11z\"/>", "shoe": "<path d=\"M3 17h18v3H3zM5 17c0-4 3-6 6-6l4 3 4 1v2\"/>", "watch": "<circle cx=\"12\" cy=\"12\" r=\"5\"/><path d=\"M12 9v3l2 1M9 7l1-4h4l1 4M9 17l1 4h4l1-4\"/>", "slide": "<path d=\"M4 15h16v3H4zM6 15c0-3 2-5 5-5h2l5 5\"/>", "ramp": "<path d=\"M3 19l14-11v11zM3 19h18\"/>", "clip": "<rect x=\"8\" y=\"3\" width=\"8\" height=\"12\" rx=\"2\"/><path d=\"M10 6h4M10 9h4M8 15l-1 6M16 15l1 6\"/>", "scoop": "<path d=\"M5 8h10l-1 6a3 3 0 0 1-3 2h-2a3 3 0 0 1-3-2zM15 10h3a2 2 0 0 1 0 4h-3M12 16v4\"/>", "cat": "<rect x=\"5\" y=\"3\" width=\"14\" height=\"18\" rx=\"1.5\"/><path d=\"M9 21v-5a3 3 0 0 1 6 0v5\"/>"};
 var SOON = ['Escritório'];
-var data = null, niche = 'todos', sort = 'views', lastFocus = null;
+var data = null, niche = 'todos', sort = 'views', view = 'videos', lastFocus = null;
 function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
 function vnum(s) { var n = parseFloat(String(s).replace(',', '.')); return /\bmi\b/.test(s) ? n * 1000 : n; }
 function vsplit(s) { var m = /^([\d.,]+)\s*(.*)$/.exec(s); if (!m) return [s, '']; var u = m[2] === 'mi' ? 'milhões' : m[2]; return [m[1], u]; }
@@ -123,15 +134,64 @@ function tip(text) {
   z.appendChild(bx); z.appendChild(b); return z;
 }
 function icon(k) { var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('class', 'ic'); s.setAttribute('aria-hidden', 'true'); s.innerHTML = IC[k] || IC.kit; return s; }
+function brl(s) { var n = parseFloat(String(s).replace(',', '.')); return isFinite(n) ? n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : ''; }
+function shopeeUrl(u) { return /^https:\/\/([\w-]+\.)*shopee\.com\.br\//.test(u || '') ? u : ''; }
+function topProducts(nk) {
+  var seen = {}, arr = [];
+  (data.candidatos || []).forEach(function (c) { if (c.nicho !== nk || seen[c.itemId] || !(c.sales > 0)) return; seen[c.itemId] = 1; arr.push(c); });
+  arr.sort(function (a, b) { return b.sales - a.sales; });
+  return arr.slice(0, 5);
+}
+function productCard(p, rank) {
+  var u = shopeeUrl(p.productLink), c = el(u ? 'a' : 'div', 'card');
+  if (u) { c.href = u; c.target = '_blank'; c.rel = 'noopener noreferrer'; c.setAttribute('aria-label', p.productName + ' na Shopee (abre em nova aba)'); }
+  var po = el('div', 'pimg');
+  if (/^https:\/\/cf\.shopee\.com\.br\//.test(p.imageUrl || '')) { var im = document.createElement('img'); im.src = p.imageUrl; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; po.appendChild(im); }
+  po.appendChild(el('span', 'rank', '#' + rank)); po.appendChild(el('span', 'src', 'Shopee')); c.appendChild(po);
+  var inf = el('div', 'info'); inf.appendChild(el('span', 'nm', p.productName));
+  var vn = el('div', 'vn pv'); vn.appendChild(el('b', null, brl(p.priceMin)));
+  if (parseFloat(p.priceMax) > parseFloat(p.priceMin)) vn.appendChild(el('span', null, 'até ' + brl(p.priceMax)));
+  inf.appendChild(vn);
+  inf.appendChild(el('span', 'sub', p.sales.toLocaleString('pt-BR') + ' vendidos'));
+  var rt = parseFloat(p.ratingStar), meta = [];
+  if (rt > 0) meta.push('★ ' + rt.toFixed(1).replace('.', ','));
+  if (p.shopName) meta.push(p.shopName);
+  if (meta.length) inf.appendChild(el('span', 'sub', meta.join(' · ')));
+  if (u) inf.appendChild(el('span', 'go', 'Ver na Shopee ↗'));
+  c.appendChild(inf); return c;
+}
+function drawProducts(out) {
+  var keys = niche === 'todos' ? data.nichos : data.nichos.filter(function (n) { return n.key === niche; }), any = false;
+  keys.forEach(function (n) {
+    var list = topProducts(n.key); if (!list.length) return; any = true;
+    if (niche === 'todos') out.appendChild(el('h2', 'sec', n.label));
+    var grid = el('div', 'grid'); list.forEach(function (p, i) { grid.appendChild(productCard(p, i + 1)); }); out.appendChild(grid);
+  });
+  if (!any) out.appendChild(el('div', 'empty', 'Ainda não há produtos mais vendidos para esse nicho. O robô do Radar atualiza todo dia.'));
+}
+function drawFoot() {
+  var ft = document.getElementById('foot'); ft.textContent = '';
+  var d = data.atualizado ? new Date(data.atualizado).toLocaleDateString('pt-BR') : '';
+  ft.appendChild(el('span', null, 'Atualizado em ' + d));
+  ft.appendChild(tip(view === 'vendidos'
+    ? 'Os mais vendidos entre os resultados da Shopee para os produtos do Radar, na ordem das vendas informadas no anúncio. Preço e vendas mudam: confira no anúncio e veja a comissão no seu painel de afiliado antes de divulgar.'
+    : 'O Radar mostra o que aparece nos vídeos, não o que mais vende. Os vídeos são dos criadores, que são os donos do conteúdo.'));
+}
 function all() { var o = []; data.nichos.forEach(function (n) { n.itens.forEach(function (it) { if (okVideos(it).length) o.push({ nk: n.key, nl: n.label, it: it }); }); }); return o; }
 
 function drawBar() {
   var bar = document.getElementById('bar'); bar.textContent = '';
+  var vr = el('div', 'vrow'), vw = el('div', 'views');
+  [['videos', 'Vídeos'], ['vendidos', 'Mais vendidos']].forEach(function (v) {
+    var b = el('button', null, v[1]); b.type = 'button'; b.setAttribute('aria-pressed', String(view === v[0]));
+    b.addEventListener('click', function () { view = v[0]; draw(); }); vw.appendChild(b);
+  }); vr.appendChild(vw); bar.appendChild(vr);
   [{ key: 'todos', label: 'Todos' }].concat(data.nichos.map(function (n) { return { key: n.key, label: n.label }; })).forEach(function (n) {
     var b = el('button', 'chip', n.label); b.type = 'button'; b.setAttribute('aria-pressed', String(niche === n.key));
     b.addEventListener('click', function () { niche = n.key; draw(); }); bar.appendChild(b);
   });
-  SOON.forEach(function (nm) { var b = el('button', 'chip soon', nm); b.type = 'button'; b.setAttribute('aria-pressed', String(niche === 'soon:' + nm)); b.addEventListener('click', function () { niche = 'soon:' + nm; draw(); }); bar.appendChild(b); });
+  if (view === 'videos') SOON.forEach(function (nm) { var b = el('button', 'chip soon', nm); b.type = 'button'; b.setAttribute('aria-pressed', String(niche === 'soon:' + nm)); b.addEventListener('click', function () { niche = 'soon:' + nm; draw(); }); bar.appendChild(b); });
+  if (view !== 'videos') return;
   var sg = el('div', 'seg'); [['views', 'Mais vistos'], ['recent', 'Mais recentes']].forEach(function (s) {
     var b = el('button', null, s[1]); b.type = 'button'; b.setAttribute('aria-pressed', String(sort === s[0])); b.addEventListener('click', function () { sort = s[0]; draw(); }); sg.appendChild(b);
   }); bar.appendChild(sg);
@@ -141,8 +201,13 @@ var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function 
     var f = document.createElement('iframe'); f.src = po._u; f.loading = 'lazy'; f.tabIndex = -1; f.setAttribute('aria-hidden', 'true'); f.title = ''; f.setAttribute('sandbox', 'allow-scripts allow-same-origin'); if (po._ig) po.classList.add('ig'); po.insertBefore(f, po.firstChild); po.classList.add('has'); });
 }, { rootMargin: '200px' }) : { observe: function () {}, unobserve: function () {} };
 function draw() {
-  drawBar();
+  if (view === 'vendidos' && /^soon:/.test(niche)) niche = 'todos';
+  drawBar(); drawFoot();
+  document.getElementById('lead').textContent = view === 'vendidos'
+    ? 'Os produtos que mais vendem na Shopee em cada nicho, com preço, vendas e o link do anúncio.'
+    : 'Produtos que estão aparecendo em vídeos de criadores, com o vídeo original para você assistir e entender o formato.';
   var out = document.getElementById('out'); out.textContent = '';
+  if (view === 'vendidos') { drawProducts(out); return; }
   if (/^soon:/.test(niche)) {
     var em = el('div', 'empty'); em.appendChild(el('b', null, niche.slice(5) + ' ainda não tem vídeos no Radar.'));
     em.appendChild(el('p', null, 'Esse nicho entra quando o robô do Radar for alimentado com vídeos reais dele.')); out.appendChild(em); return;
@@ -189,8 +254,6 @@ document.getElementById('modal').addEventListener('click', function (e) { if (e.
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 fetch('radar/radar.json?v=' + Date.now()).then(function (r) { return r.json(); }).then(function (j) {
   data = j; draw();
-  var d = j.atualizado ? new Date(j.atualizado).toLocaleDateString('pt-BR') : '';
-  var ft = document.getElementById('foot'); ft.textContent = ''; ft.appendChild(el('span', null, 'Atualizado em ' + d)); ft.appendChild(tip('O Radar mostra o que aparece nos vídeos, não o que mais vende. Os vídeos são dos criadores, que são os donos do conteúdo.'));
 }).catch(function () { document.getElementById('out').appendChild(el('div', 'empty', 'Não consegui carregar o Radar agora. Tente de novo em instantes.')); });
 </script>
 </body>
