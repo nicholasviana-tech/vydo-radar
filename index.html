@@ -84,6 +84,9 @@ footer .tipbox { text-align:right; background:transparent; border-color:transpar
 .views button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
 .sec { margin:34px 0 14px; font-size:20px; font-weight:500; letter-spacing:-.02em; }
 .sec:first-child { margin-top:0; }
+.sec { display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.sec .all { font-size:13px; font-weight:400; color:var(--mute); background:none; border:0; cursor:pointer; text-decoration:underline; padding:4px 0; }
+.more { display:flex; flex-direction:column; align-items:center; gap:10px; margin:26px 0 6px; }
 .pimg { position:relative; aspect-ratio:1/1; overflow:hidden; background:var(--panel-2); }
 .pimg img { display:block; width:100%; height:100%; object-fit:cover; }
 .rank { z-index:3; position:absolute; left:12px; top:12px; font-family:var(--mono); font-size:11px; padding:4px 9px; border-radius:999px; background:rgba(8,8,11,.7); border:1px solid var(--line-2); }
@@ -136,12 +139,7 @@ function tip(text) {
 function icon(k) { var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('class', 'ic'); s.setAttribute('aria-hidden', 'true'); s.innerHTML = IC[k] || IC.kit; return s; }
 function brl(s) { var n = parseFloat(String(s).replace(',', '.')); return isFinite(n) ? n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : ''; }
 function shopeeUrl(u) { return /^https:\/\/([\w-]+\.)*shopee\.com\.br\//.test(u || '') ? u : ''; }
-function topProducts(nk) {
-  var seen = {}, arr = [];
-  (data.candidatos || []).forEach(function (c) { if (c.nicho !== nk || seen[c.itemId] || !(c.sales > 0)) return; seen[c.itemId] = 1; arr.push(c); });
-  arr.sort(function (a, b) { return b.sales - a.sales; });
-  return arr.slice(0, 5);
-}
+function topProducts(nk) { return ((data.maisVendidos || {})[nk] || []).filter(function (c) { return c.sales > 0; }); }
 function productCard(p, rank) {
   var u = shopeeUrl(p.productLink), c = el(u ? 'a' : 'div', 'card');
   if (u) { c.href = u; c.target = '_blank'; c.rel = 'noopener noreferrer'; c.setAttribute('aria-label', p.productName + ' na Shopee (abre em nova aba)'); }
@@ -160,21 +158,34 @@ function productCard(p, rank) {
   if (u) inf.appendChild(el('span', 'go', 'Ver na Shopee ↗'));
   c.appendChild(inf); return c;
 }
+var PAGE = 12, SEC = 3;
+function moreBtn(label, fn) { var b = el('button', 'btn', label); b.type = 'button'; b.addEventListener('click', fn); return b; }
 function drawProducts(out) {
-  var keys = niche === 'todos' ? data.nichos : data.nichos.filter(function (n) { return n.key === niche; }), any = false;
-  keys.forEach(function (n) {
-    var list = topProducts(n.key); if (!list.length) return; any = true;
-    if (niche === 'todos') out.appendChild(el('h2', 'sec', n.label));
-    var grid = el('div', 'grid'); list.forEach(function (p, i) { grid.appendChild(productCard(p, i + 1)); }); out.appendChild(grid);
-  });
-  if (!any) out.appendChild(el('div', 'empty', 'Ainda não há produtos mais vendidos para esse nicho. O robô do Radar atualiza todo dia.'));
+  var secs = (niche === 'todos' ? data.nichos : data.nichos.filter(function (n) { return n.key === niche; }))
+    .map(function (n) { return { n: n, list: topProducts(n.key) }; }).filter(function (s) { return s.list.length; });
+  if (!secs.length) { out.appendChild(el('div', 'empty', 'Ainda não há produtos mais vendidos para esse nicho. O robô do Radar atualiza todo dia.')); return; }
+  var all = niche === 'todos', body = el('div'), more = el('div', 'more'), n = 0;
+  out.appendChild(body); out.appendChild(more);
+  function add() {
+    var first = null;
+    secs.slice(n, n + SEC).forEach(function (s) {
+      var h = el('h2', 'sec', s.n.label);
+      if (all && s.list.length > 5) { var a = el('button', 'all', 'Ver os ' + s.list.length + ' ›'); a.type = 'button'; a.addEventListener('click', function () { niche = s.n.key; draw(); window.scrollTo(0, 0); }); h.appendChild(a); }
+      if (all) body.appendChild(h);
+      var grid = el('div', 'grid'); s.list.slice(0, all ? 5 : 10).forEach(function (p, i) { var c = productCard(p, i + 1); if (!first) first = c; grid.appendChild(c); }); body.appendChild(grid);
+    });
+    var n0 = n; n = Math.min(n + SEC, secs.length); more.textContent = '';
+    if (n < secs.length) more.appendChild(moreBtn('Mostrar mais nichos (' + (secs.length - n) + ' restantes)', add));
+    if (n0 > 0 && first && first.focus) first.focus();
+  }
+  add();
 }
 function drawFoot() {
   var ft = document.getElementById('foot'); ft.textContent = '';
   var d = data.atualizado ? new Date(data.atualizado).toLocaleDateString('pt-BR') : '';
   ft.appendChild(el('span', null, 'Atualizado em ' + d));
   ft.appendChild(tip(view === 'vendidos'
-    ? 'Os mais vendidos entre os resultados da Shopee para os produtos do Radar, na ordem das vendas informadas no anúncio. Preço e vendas mudam: confira no anúncio e veja a comissão no seu painel de afiliado antes de divulgar.'
+    ? 'Anúncios com mais vendas informadas pela Shopee em buscas gerais de cada nicho, atualizados todo dia. A Shopee não diz em que período as vendas foram contadas. Preço e vendas mudam: confira no anúncio e veja a comissão no seu painel de afiliado antes de divulgar.'
     : 'O Radar mostra o que aparece nos vídeos, não o que mais vende. Os vídeos são dos criadores, que são os donos do conteúdo.'));
 }
 function all() { var o = []; data.nichos.forEach(function (n) { n.itens.forEach(function (it) { if (okVideos(it).length) o.push({ nk: n.key, nl: n.label, it: it }); }); }); return o; }
@@ -204,7 +215,7 @@ function draw() {
   if (view === 'vendidos' && /^soon:/.test(niche)) niche = 'todos';
   drawBar(); drawFoot();
   document.getElementById('lead').textContent = view === 'vendidos'
-    ? 'Os produtos que mais vendem na Shopee em cada nicho, com preço, vendas e o link do anúncio.'
+    ? 'Os anúncios que mais vendem na Shopee em cada nicho, com preço, vendas e o link do anúncio.'
     : 'Produtos que estão aparecendo em vídeos de criadores, com o vídeo original para você assistir e entender o formato.';
   var out = document.getElementById('out'); out.textContent = '';
   if (view === 'vendidos') { drawProducts(out); return; }
@@ -215,30 +226,42 @@ function draw() {
   var list = all().filter(function (o) { return niche === 'todos' || o.nk === niche; });
   list.sort(function (a, b) { return sort === 'recent' ? dnum(best(b.it).date) - dnum(best(a.it).date) : vnum(best(b.it).views) - vnum(best(a.it).views); });
   if (!list.length) { out.appendChild(el('div', 'empty', 'Nenhum vídeo disponível agora.')); return; }
-  var grid = el('div', 'grid');
-  list.forEach(function (o) {
+  var grid = el('div', 'grid'), more = el('div', 'more'), n = 0;
+  function card(o) {
     var b = best(o.it), p = vsplit(b.views);
     var c = el('button', 'card'); c.type = 'button'; c.setAttribute('aria-label', 'Abrir ' + o.it.n);
     var po = el('div', 'poster'); po.appendChild(icon(o.it.ic)); po.appendChild(el('span', 'play', '▶')); po.appendChild(el('span', 'src', b.src)); c.appendChild(po);
-    if (b.src === 'TikTok' || b.src === 'Instagram') { po._u = embed(b.url); po._ig = b.src === 'Instagram'; io.observe(po); }
+    // O player do TikTok bloqueia (Access Denied) quando carregado em vários cards. Só abre no modal, ao clicar.
+    if (b.src === 'Instagram') { po._u = embed(b.url); po._ig = true; io.observe(po); }
     var inf = el('div', 'info'); inf.appendChild(el('span', 'nm', o.it.n));
     var vn = el('div', 'vn'); vn.appendChild(el('b', null, p[0])); if (p[1]) vn.appendChild(el('span', null, p[1])); inf.appendChild(vn);
     inf.appendChild(el('span', 'sub', 'visualizações · ' + b.src + ' · ' + ago(b.date))); c.appendChild(inf);
     c.addEventListener('click', function () { lastFocus = c; openItem(o); });
-    grid.appendChild(c);
-  });
-  out.appendChild(grid);
+    return c;
+  }
+  function add() {
+    var first = null;
+    list.slice(n, n + PAGE).forEach(function (o) { var c = card(o); if (!first) first = c; grid.appendChild(c); });
+    var n0 = n; n = Math.min(n + PAGE, list.length); more.textContent = '';
+    var left = list.length - n;
+    if (left > 0) more.appendChild(moreBtn('Mostrar mais ' + Math.min(PAGE, left), add));
+    if (list.length > PAGE) more.appendChild(el('span', 'sub', 'Mostrando ' + n + ' de ' + list.length));
+    if (n0 > 0 && first) first.focus();
+  }
+  out.appendChild(grid); out.appendChild(more); add();
 }
 function openItem(o) {
   var it = o.it, vs = okVideos(it), cur = best(it), sheet = document.getElementById('sheet'), modal = document.getElementById('modal');
   sheet.textContent = '';
   var x = el('button', 'x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Fechar'); x.addEventListener('click', close); sheet.appendChild(x);
   var pl = el('div', 'player'); sheet.appendChild(pl);
+  var note = el('p', 'sub'); sheet.appendChild(note);
   var h = el('h2', null, it.n); h.id = 'mt'; sheet.appendChild(h);
   var tabs = el('div', 'tabs'), open = el('a', 'btn'); open.target = '_blank'; open.rel = 'noopener noreferrer';
   function play(v) {
     cur = v; pl.textContent = ''; pl.classList.toggle('igframe', v.src === 'Instagram'); var u = embed(v.url);
     if (u) { var f = document.createElement('iframe'); f.src = u; f.allow = 'autoplay; fullscreen; encrypted-media'; f.allowFullscreen = true; f.title = 'Vídeo de ' + v.who; f.referrerPolicy = 'strict-origin-when-cross-origin'; if (v.src !== 'YouTube') f.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation'); pl.appendChild(f); }
+    note.textContent = v.src === 'TikTok' ? 'Se o TikTok mostrar "Access Denied", ele bloqueou o player agora. Use o botão "Abrir no TikTok" abaixo.' : '';
     open.href = v.url; open.textContent = 'Abrir no ' + v.src + ' ↗';
     Array.prototype.forEach.call(tabs.children, function (t) { t.setAttribute('aria-pressed', String(t._v === v)); });
   }
