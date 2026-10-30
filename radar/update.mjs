@@ -86,9 +86,11 @@ for (const n of cur.nichos) {
       try { item.produtoShopee = await produtoExato(it.shopee.itemId); }
       catch (e) { say(`Shopee (produto ${it.shopee.itemId}): ${e.message}`); }
     }
-    if (APP_ID && SECRET && it.busca) {
-      try { for (const c of await candidatos(it.busca)) saida.candidatos.push({ nicho: n.key, busca: it.busca, ...c }); }
-      catch (e) { say(`Shopee (busca "${it.busca}"): ${e.message}`); }
+    // Se o item não tem termo de busca próprio, usa o nome do produto como busca.
+    const termo = it.busca || it.n;
+    if (APP_ID && SECRET && termo) {
+      try { for (const c of await candidatos(termo)) saida.candidatos.push({ nicho: n.key, busca: termo, ...c }); }
+      catch (e) { say(`Shopee (busca "${termo}"): ${e.message}`); }
     }
     nicho.itens.push(item);
   }
