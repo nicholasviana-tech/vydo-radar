@@ -71,7 +71,44 @@ async function candidatos(busca) {
   return d?.productOfferV2?.nodes || [];
 }
 
-const saida = { atualizado: new Date().toISOString(), fonte: 'curadoria manual + conferência automática', nichos: [], candidatos: [], log: [] };
+
+// Termos curtos e genéricos por nicho, usados só para achar os mais vendidos de verdade.
+// (Nome de produto de vídeo é específico demais e traz anúncio com poucas vendas.)
+const BUSCA_NICHO = {
+  beleza: ['protetor solar', 'skincare', 'base maquiagem', 'perfume', 'máscara de cílios', 'hidratante facial', 'batom'],
+  casa: ['organizador', 'kit de potes', 'panela', 'cortina', 'luminária', 'tapete', 'pote hermético'],
+  moda: ['vestido', 'tênis feminino', 'bolsa feminina', 'conjunto feminino', 'relógio', 'camiseta'],
+  pet: ['ração', 'caminha pet', 'brinquedo para cachorro', 'arranhador gato', 'coleira', 'tapete higiênico'],
+  carros: ['capa banco carro', 'suporte celular carro', 'aspirador automotivo', 'capa de moto', 'organizador porta-malas', 'led carro'],
+  comida: ['air fryer', 'forma de silicone', 'faca cozinha', 'garrafa térmica', 'marmita', 'liquidificador'],
+  bebe: ['fralda', 'mamadeira', 'carrinho de bebê', 'brinquedo bebê', 'babador', 'mordedor'],
+  brinquedos: ['lego', 'boneca', 'carrinho de brinquedo', 'quebra-cabeça', 'massinha', 'pelúcia'],
+  eletronicos: ['fone bluetooth', 'carregador', 'smartwatch', 'caixa de som', 'cabo usb', 'mouse'],
+  fitness: ['creatina', 'whey protein', 'garrafa academia', 'faixa elástica', 'luva de treino', 'corda de pular'],
+  ferramentas: ['furadeira', 'parafusadeira', 'kit ferramentas', 'chave de fenda', 'trena', 'fita veda rosca'],
+};
+// Busca própria para itens cujo nome de vídeo não acha nada na Shopee.
+const BUSCA_ITEM = {
+  'Kit de skincare com oferta por tempo limitado': 'kit skincare',
+  'Spray matificante para pele oleosa': 'spray fixador maquiagem',
+  'Gaveteiro portátil com rodinhas': 'gaveteiro com rodinhas',
+  'Porta que deixa o gato passar e luva tira-pelos': 'luva tira pelos',
+  'Painel de LED solar com olhos para o vidro traseiro': 'painel led carro',
+  'Mamadeira usada como chuveirinho': 'mamadeira',
+  'Calendário de Natal com 28 brinquedos': 'calendário advento brinquedos',
+  'Brinquedos baratinhos da Shopee': 'brinquedo infantil',
+  'Whey protein em oferta': 'whey protein',
+  'Creatina para ter em casa': 'creatina',
+  'Kit que transforma parafusadeira em semiautomática': 'adaptador parafusadeira',
+};
+const MIN_VENDAS = 100; // abaixo disso não é "mais vendido"
+const pausa = (ms) => new Promise((r) => setTimeout(r, ms));
+async function maisVendidos(termo) {
+  const d = await shopee(`{ productOfferV2(keyword: "${esc(termo)}", sortType: 2, limit: 20) { nodes { ${FIELDS} } } }`);
+  return d?.productOfferV2?.nodes || [];
+}
+
+const saida = { atualizado: new Date().toISOString(), fonte: 'curadoria manual + conferência automática', nichos: [], candidatos: [], maisVendidos: {}, log: [] };
 
 for (const n of cur.nichos) {
   const nicho = { key: n.key, label: n.label, itens: [] };
@@ -87,7 +124,7 @@ for (const n of cur.nichos) {
       catch (e) { say(`Shopee (produto ${it.shopee.itemId}): ${e.message}`); }
     }
     // Se o item não tem termo de busca próprio, usa o nome do produto como busca.
-    const termo = it.busca || it.n;
+    const termo = it.busca || BUSCA_ITEM[it.n] || it.n;
     if (APP_ID && SECRET && termo) {
       try { for (const c of await candidatos(termo)) saida.candidatos.push({ nicho: n.key, busca: termo, ...c }); }
       catch (e) { say(`Shopee (busca "${termo}"): ${e.message}`); }
@@ -95,6 +132,23 @@ for (const n of cur.nichos) {
     nicho.itens.push(item);
   }
   saida.nichos.push(nicho);
+}
+
+// Mais vendidos por nicho: junta os resultados dos termos genéricos, tira repetidos e ordena por vendas.
+if (APP_ID && SECRET) {
+  for (const [nk, termos] of Object.entries(BUSCA_NICHO)) {
+    const vistos = new Map();
+    for (const t of termos) {
+      try { for (const c of await maisVendidos(t)) if (!vistos.has(c.itemId)) vistos.set(c.itemId, c); }
+      catch (e) { say(`Shopee (mais vendidos "${t}"): ${e.message}`); }
+      await pausa(300);
+    }
+    saida.maisVendidos[nk] = [...vistos.values()]
+      .filter((c) => Number(c.sales) >= MIN_VENDAS)
+      .sort((a, b) => Number(b.sales) - Number(a.sales))
+      .slice(0, 10);
+    say(`Mais vendidos ${nk}: ${saida.maisVendidos[nk].length} (de ${vistos.size} achados)`);
+  }
 }
 if (!APP_ID || !SECRET) say('Sem chaves da Shopee: produtos e candidatos não foram buscados.');
 saida.log = log;
