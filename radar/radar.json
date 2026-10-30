@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-10-29T10:04:04.035Z",
+ "atualizado": "2026-10-30T04:20:20.399Z",
  "fonte": "curadoria manual + conferência automática",
  "nichos": [
   {
@@ -1188,7 +1188,5 @@
   }
  ],
  "candidatos": [],
- "log": [
-  "Sem chaves da Shopee: produtos e candidatos não foram buscados."
- ]
+ "log": []
 }
